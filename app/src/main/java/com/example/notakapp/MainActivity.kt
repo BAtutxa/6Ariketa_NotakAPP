@@ -195,3 +195,4 @@ fun GreetingPreview() {
         NotakKalkulatu()
     }
 }
+// kaixo mundua
