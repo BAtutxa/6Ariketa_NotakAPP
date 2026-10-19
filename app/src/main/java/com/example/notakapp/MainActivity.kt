@@ -77,7 +77,7 @@ fun NotakKalkulatu(modifier: Modifier = Modifier) {
             modifier = Modifier
                 .fillMaxSize()
                 .verticalScroll(rememberScrollState())
-                .padding(start = 30.dp, end = 16.dp, top = 130.dp, bottom = 16.dp),
+                .padding(start = 30.dp, end = 16.dp, top = 155.dp, bottom = 16.dp),
             verticalArrangement = Arrangement.spacedBy(12.dp),
             horizontalAlignment = Alignment.CenterHorizontally
         ) {
@@ -92,7 +92,6 @@ fun NotakKalkulatu(modifier: Modifier = Modifier) {
             )
 
 
-            // Una fila por asignatura, recorriendo el array
             for (i in 0 until 7) {
                 Fila(izenak[i], notak[i][0], notak[i][1])
             }
@@ -103,8 +102,6 @@ fun NotakKalkulatu(modifier: Modifier = Modifier) {
                     val denak = mutableListOf<Double>()
                     var guztiakOndo = true
 
-
-                    // Recorrer el array 2D y pasar los textos a números
                     for (i in 0 until 7) {
                         for (j in 0 until 2) {
                             val n = notak[i][j].value.replace(',', '.').toDoubleOrNull()
@@ -112,9 +109,7 @@ fun NotakKalkulatu(modifier: Modifier = Modifier) {
                         }
                     }
 
-
                     emaitza = if (guztiakOndo) {
-                        // Ordenar, quitar la más baja y la más alta, y hacer el promedio
                         val ordenatuta = denak.sorted()
                         val kenduta = ordenatuta.drop(1).dropLast(1)
                         "%.2f".format(kenduta.average())
@@ -136,8 +131,6 @@ fun NotakKalkulatu(modifier: Modifier = Modifier) {
     }
 }
 
-
-// UNA FILA: Text (módulo) + TextField + TextField + Text (media de la fila)
 @Composable
 fun Fila(
     izena: String,
